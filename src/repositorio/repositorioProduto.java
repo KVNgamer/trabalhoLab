@@ -9,12 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Produto;
 
-/**
- *
- * @author KEVIN
- */
 public class repositorioProduto {
- private List<Produto> listaProdutos;
+    private List<Produto> listaProdutos;
     private static repositorioProduto instance = null;
     
     private repositorioProduto() {

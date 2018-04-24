@@ -34,7 +34,7 @@ public class menuCli {
                 listarCli();
                 break;
             case 0:
-                System.out.println("Saindo do Sistema...");
+                System.out.println("Voltando menu principal...");
                 break;
             default:
                 System.err.println("Erro: Escolha a opcao correta!!");                
@@ -63,16 +63,16 @@ public class menuCli {
 
         if(repositorioCliente.getInstance().estaVazio()){
             System.out.println("-----------------------------");        
-            System.out.println("Nao ha Cliente cadastrados");
+            System.err.println("Nao ha Cliente cadastrados");
             System.out.println("-----------------------------\n");
         }
         else{
             System.out.println("-----------------------------\n");
-            System.out.println(String.format("%-10s", "CPF") + "\t"
+            System.out.println(String.format("%-10s", "|CPF") + "\t"
                     + String.format("%-20s", "|Nome") + "\t"
                     + String.format("%-20s", "|Email"));
             for (Cliente cliente : repositorioCliente.getInstance().getCliente()) {
-                System.out.println(String.format("%-10s", cliente.getCpf()) + "\t"
+                System.out.println(String.format("%-10s", "|" + cliente.getCpf()) + "\t"
                         + String.format("%-20s", "|" + cliente.getNome()) + "\t"
                         + String.format("%-20s", "|" + cliente.getEmail()));
             }

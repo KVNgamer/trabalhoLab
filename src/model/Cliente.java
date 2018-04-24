@@ -27,10 +27,22 @@ public class Cliente {
        return this.nome;
     }
 
+     public double getSaldo() {
+       return this.saldo;
+    }
+     
     public String getCpf() {
         return this.cpf;
     }
      public String getEmail() {
         return this.email;
+    }
+    public void setSaldo(double saldo){
+    this.saldo += saldo;
+    
+    }
+
+    public void setDescSaldo(double saldo) {
+        this.saldo -= saldo;
     }
 }

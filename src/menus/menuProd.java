@@ -10,30 +10,32 @@ import repositorio.repositorioCliente;
 import repositorio.repositorioProduto;
 import util.Console;
 
-/**
+/*
  *
  * @author KEVIN
+ *
  */
+
 public class menuProd {
- private static int k=1;
+    private static int k=1;
     public static void menuProduto() {
         System.out.println("Menu: ");
         System.out.println("    1- Adicionar Produto");
         System.out.println("    2- Listar Produto");
-        System.out.println("    0- Sair");
+        System.out.println("    0- Voltar");
         int opcao = Console.scanInt("Digite a opcao: ");
         System.out.println("\n==ANALIZANDO==\n");
         switch(opcao){
             case 1:
-                System.out.println("Adicionando ...");
+                System.out.println("Adicionando Produto...");
                 criaProd();
                 break;
             case 2:
-                System.out.println("Listando ...");
+                System.out.println("Listando Produtos...");
                 listarProd();
                 break;
             case 0:
-                System.out.println("Saindo do Sistema...");
+                System.out.println("Voltando menu principal...");
                 break;
             default:
                 System.err.println("Erro: Escolha a opcao correta!!");                
@@ -55,7 +57,7 @@ public class menuProd {
         } 
     
     
-    private static void listarProd() {
+    public static void listarProd() {
         
 
         if(repositorioProduto.getInstance().estaVazio()){
@@ -65,14 +67,15 @@ public class menuProd {
         }
         else{
             System.out.println("-----------------------------\n");
-            System.out.println(String.format("%-8s", "codigo") + "\t"
+            System.out.println(String.format("%-7s", "|codigo") + "\t"
                              + String.format("%-20s", "|Nome") + "\t"
                              + String.format("%-10s", "|Preço"));
             for (Produto produto : repositorioProduto.getInstance().getProduto()) {
-                System.out.println(String.format("%-8s", produto.getCod()) + "\t"
+                System.out.println(String.format("%-7s", "|" + produto.getCod()) + "\t"
                                  + String.format("%-20s", "|" + produto.getNome()) + "\t"
-                                 + String.format("%-10s", "|" + produto.getPreco())+'\n');
+                                 + String.format("%-10s", "|" + produto.getPreco()));
             }
+            System.out.println(" ");
         }
     }     
 }
