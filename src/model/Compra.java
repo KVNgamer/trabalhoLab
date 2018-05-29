@@ -10,8 +10,8 @@ package model;
  * @author KEVIN
  */
 public class Compra {
-    Produto produto;
-    int numeroProd;
+    private Produto produto;
+    private int numeroProd;
     
     
     

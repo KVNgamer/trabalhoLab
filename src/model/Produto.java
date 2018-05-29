@@ -10,9 +10,9 @@ package model;
  * @author KEVIN
  */
 public class Produto {
-  String nome;
-    double preco;
-    int cod;
+    private String nome;
+    private double preco;
+    private int cod;
     
   
 

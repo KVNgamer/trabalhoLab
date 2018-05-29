@@ -1,15 +1,20 @@
 
 package trabalholab;
 
+import menusAntigos.menuCompra;
+import menusAntigos.menuProd;
+import menusAntigos.menuOpCli;
+import menusAntigos.menuCli;
 import model.Cliente;
 import util.Console;
 import java.util.ArrayList;
-import menus.*;
+import java.util.InputMismatchException;
 import model.Compra;
 import model.Produto;
 import repositorio.repositorioCliente;
 import repositorio.repositorioCompra;
 import repositorio.repositorioProduto;
+import view.ClienteUI;
 
 /**
  *
@@ -27,62 +32,64 @@ public class Main {
 
     private static void MenuPrincipal() {
         while(true){         
-
-            System.out.println("Menu: ");
-            System.out.println("    1- Menu para administrar Cliente");
-            System.out.println("    2- Menu para administrar Produto");
-            System.out.println("    3- Menu para operaçoes Cliente");
-            System.out.println("    4- Menu para Comprar produtos");
-            System.out.println("    0- Sair");
-            int opcao = Console.scanInt("Digite a opcao: ");
-            System.out.println("\n==ANALIZANDO==\n");
-            switch(opcao){
-                case 1:
-                    System.out.println("Indo menu Cliente ...");
-                    menuCli.menuCliente();
-                    break;
-                case 2:
-                    System.out.println("Indo menu Produto ...");
-                    menuProd.menuProduto();
-                    break;
-                case 3:
-                    if(repositorioCliente.getInstance().estaVazio()){
-                        System.out.println("\n----------------------------------------------------");        
-                        System.out.println("Nao ha Clientes cadastrados para realizar as operaçoes");
-                        System.out.println("----------------------------------------------------\n");
+            try{
+                System.out.println("Menu: ");
+                System.out.println("    1- Menu para administrar Cliente");
+                System.out.println("    2- Menu para administrar Produto");
+                System.out.println("    3- Menu para operaçoes Cliente");
+                System.out.println("    4- Menu para Comprar produtos");
+                System.out.println("    0- Sair");
+                int opcao = Console.scanInt("Digite a opcao: ");
+                System.out.println("\n==ANALIZANDO==\n");
+                switch(opcao){
+                    case 1:
+                        System.out.println("Indo menu Cliente ...");
+                        new ClienteUI().menu();
                         break;
-                    }
-                    System.out.println("Indo para menu operaçoes Cliente ...");
-                    menuOpCli.menuOpCliente();
-                    break;
-                case 4:
-                    if(repositorioCliente.getInstance().estaVazio()){
-                        System.out.println("\n-------------------------------------------------------");        
-                        System.err.println("Nao ha Clientes cadastrados para poderem realizar compras");
-                        System.out.println("-------------------------------------------------------\n");
+                    case 2:
+                        System.out.println("Indo menu Produto ...");
+                        menuProd.menuProduto();
                         break;
-                    }
-                    if(repositorioProduto.getInstance().estaVazio()){
-                        System.out.println("\n-------------------------------------------------------");        
-                        System.err.println("Nao ha Produtos cadastrados para poderem realizar compras");
-                        System.out.println("-------------------------------------------------------\n");
+                    case 3:
+                        if(repositorioCliente.getInstance().estaVazio()){
+                            System.out.println("\n----------------------------------------------------");        
+                            System.out.println("Nao ha Clientes cadastrados para realizar as operaçoes");
+                            System.out.println("----------------------------------------------------\n");
+                            break;
+                        }
+                        System.out.println("Indo para menu operaçoes Cliente ...");
+                        menuOpCli.menuOpCliente();
                         break;
-                    }
-                    System.out.println("Indo para menu Comprar produtos ...");
-                    menuCompra.menuComprar();
-                    break;
-                case 5:
-                    System.out.println("Relatorios ...");
-                    menuCli.menuCliente();
-                    break;
-                case 0:
-                    System.out.println("Saindo do Sistema...");
-                    System.exit(0);
-                    break;
-                default:
-                    System.err.println("Erro: Escolha a opcao correta!!");                
+                    case 4:
+                        if(repositorioCliente.getInstance().estaVazio()){
+                            System.out.println("\n-------------------------------------------------------");        
+                            System.err.println("Nao ha Clientes cadastrados para poderem realizar compras");
+                            System.out.println("-------------------------------------------------------\n");
+                            break;
+                        }
+                        if(repositorioProduto.getInstance().estaVazio()){
+                            System.out.println("\n-------------------------------------------------------");        
+                            System.err.println("Nao ha Produtos cadastrados para poderem realizar compras");
+                            System.out.println("-------------------------------------------------------\n");
+                            break;
+                        }
+                        System.out.println("Indo para menu Comprar produtos ...");
+                        menuCompra.menuComprar();
+                        break;
+                    case 5:
+                        System.out.println("Relatorios ...");
+                        menuCli.menuCliente();
+                        break;
+                    case 0:
+                        System.out.println("Saindo do Sistema...");
+                        System.exit(0);
+                        break;
+                    default:
+                        System.err.println("Erro: Escolha a opcao correta!!");                
+                }
+            }catch(InputMismatchException ime){
+                System.err.println("Não é possivel digitar letras ou caracteres especiais!");
             }
-
         }
     }
 
